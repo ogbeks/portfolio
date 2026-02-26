@@ -24,8 +24,8 @@ This is a static HTML/CSS portfolio site showcasing:
 ## Customization
 
 Update the following in `index.html` before deploying:
-- Email address (`ogbekilesamuel@gmail.com`) — confirm this is correct
-- Upwork profile URL — update with your exact profile link
+- Email address (`ogbekilechukwudi@gmail.com`) 
+- [Upwork profile ](https://www.upwork.com/freelancers/~0120d38bac5974a240)
 - Any project descriptions or GitHub links
 
 ## Tech Stack
