@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chukwudi Ogbekile — AI Scientist & Data Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #050A0E;
+    --surface: #0C1419;
+    --surface2: #111C24;
+    --border: #1A2D3A;
+    --accent: #00C8FF;
+    --accent2: #00FF9D;
+    --accent3: #FF6B35;
+    --text: #E8F4F8;
+    --text-muted: #6B8FA3;
+    --text-dim: #3A5A6E;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* GRID NOISE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,200,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,200,255,0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ─── NAVBAR ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.25rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(5,10,14,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  .nav-cta {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.55rem 1.4rem;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .nav-cta:hover {
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 4rem 4rem;
+    gap: 4rem;
+    overflow: hidden;
+  }
+
+  /* Glowing orbs */
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(0,200,255,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.8rem, 5vw, 5rem);
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+  }
+
+  .hero h1 .highlight {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--accent);
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent);
+    color: var(--bg);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.9rem 1.8rem;
+    text-decoration: none;
+    font-weight: 700;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.9rem 1.8rem;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* Stats on the right side */
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+  }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(0, 255, 157, 0.08);
+    border: 1px solid rgba(0, 255, 157, 0.25);
+    padding: 0.5rem 1rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent2);
+    letter-spacing: 0.05em;
+    width: fit-content;
+    margin-bottom: 0.5rem;
+  }
+
+  .status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent2);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .stat-item {
+    background: var(--surface);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .stat-number {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tech-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .tech-tag:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* ─── SECTION BASE ─── */
+  section {
+    position: relative;
+    padding: 6rem 4rem;
+    z-index: 1;
+  }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 700;
+    margin-bottom: 3.5rem;
+    line-height: 1.15;
+  }
+
+  /* ─── ABOUT ─── */
+  #about {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
+  .about-text p strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .education-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .edu-item {
+    border-left: 2px solid var(--border);
+    padding-left: 1.25rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    transition: border-color 0.2s;
+  }
+
+  .edu-item:hover { border-color: var(--accent); }
+
+  .edu-degree {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+
+  .edu-school {
+    font-size: 0.85rem;
+    color: var(--accent);
+    margin-bottom: 0.2rem;
+  }
+
+  .edu-meta {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+  }
+
+  .award-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(255, 107, 53, 0.1);
+    border: 1px solid rgba(255, 107, 53, 0.25);
+    padding: 0.25rem 0.6rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--accent3);
+    margin-top: 0.4rem;
+    letter-spacing: 0.04em;
+  }
+
+  /* ─── EXPERTISE ─── */
+  #expertise {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .expertise-card {
+    background: var(--bg);
+    padding: 2.25rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+
+  .expertise-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+  }
+
+  .expertise-card:hover { background: var(--surface); }
+  .expertise-card:hover::before { transform: scaleX(1); }
+
+  .card-icon {
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .card-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--text);
+  }
+
+  .card-desc {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  .card-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 1.25rem;
+  }
+
+  .tool-pill {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    padding: 0.2rem 0.55rem;
+    background: rgba(0,200,255,0.06);
+    border: 1px solid rgba(0,200,255,0.15);
+    color: var(--accent);
+    letter-spacing: 0.04em;
+  }
+
+  /* ─── EXPERIENCE ─── */
+  #experience {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .timeline {
+    position: relative;
+    max-width: 900px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+  }
+
+  .timeline-item {
+    padding-left: 3rem;
+    padding-bottom: 3.5rem;
+    position: relative;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 8px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+  }
+
+  .timeline-meta {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-role {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+
+  .timeline-company {
+    font-size: 0.9rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .timeline-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .timeline-points li {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    padding-left: 1.25rem;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .timeline-points li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.7rem;
+    top: 0.15rem;
+  }
+
+  /* ─── PORTFOLIO ─── */
+  #portfolio {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .project-card {
+    background: var(--bg);
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.25s;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .project-card:hover { background: var(--surface2); }
+
+  .project-card::after {
+    content: '↗';
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 1rem;
+    color: var(--text-dim);
+    transition: color 0.2s, transform 0.2s;
+  }
+
+  .project-card:hover::after {
+    color: var(--accent);
+    transform: translate(2px, -2px);
+  }
+
+  .project-number {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+  }
+
+  .project-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+  }
+
+  .project-desc {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .project-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    padding: 0.2rem 0.55rem;
+    background: rgba(0,255,157,0.06);
+    border: 1px solid rgba(0,255,157,0.15);
+    color: var(--accent2);
+    letter-spacing: 0.04em;
+  }
+
+  /* ─── UPWORK ─── */
+  #upwork {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .upwork-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-bottom: 4rem;
+  }
+
+  .upwork-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .upwork-stat {
+    background: var(--bg);
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .upwork-stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--accent2);
+  }
+
+  .upwork-stat-lbl {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 0.25rem;
+  }
+
+  .upwork-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(0,255,157,0.08);
+    border: 1px solid rgba(0,255,157,0.2);
+    padding: 0.6rem 1.2rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent2);
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .testimonial {
+    background: var(--bg);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: background 0.2s;
+  }
+
+  .testimonial:hover { background: var(--surface2); }
+
+  .stars {
+    color: var(--accent);
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+  }
+
+  .testimonial-text {
+    font-size: 0.87rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    font-style: italic;
+    flex: 1;
+  }
+
+  .testimonial-meta {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+    border-top: 1px solid var(--border);
+    padding-top: 0.75rem;
+  }
+
+  /* ─── CONTACT ─── */
+  #contact {
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+    position: relative;
+  }
+
+  #contact::before {
+    content: '';
+    position: absolute;
+    bottom: -300px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(0,200,255,0.06) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .contact-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .contact-inner .section-label {
+    justify-content: center;
+  }
+
+  .contact-inner .section-label::before { display: none; }
+
+  .contact-tagline {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+  }
+
+  .contact-tagline .outline {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--accent);
+  }
+
+  .contact-desc {
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.8rem 1.5rem;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .contact-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .contact-email {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.3rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.5rem;
+    transition: opacity 0.2s;
+  }
+
+  .contact-email:hover { opacity: 0.7; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-copy {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .footer-links a {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--accent); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-content > * {
+    animation: fadeInUp 0.7s ease both;
+  }
+
+  .hero-eyebrow { animation-delay: 0.1s; }
+  .hero h1 { animation-delay: 0.2s; }
+  .hero-desc { animation-delay: 0.3s; }
+  .hero-actions { animation-delay: 0.4s; }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 1.25rem 2rem; }
+    .nav-links { display: none; }
+    section { padding: 5rem 2rem; }
+    footer { padding: 2rem; }
+    .hero { grid-template-columns: 1fr; padding: 8rem 2rem 4rem; }
+    .hero-right { display: none; }
+    .about-grid, .upwork-hero { grid-template-columns: 1fr; gap: 3rem; }
+    .expertise-grid, .testimonials-grid { grid-template-columns: 1fr; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .upwork-stats { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* horizontal rule flourish */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0 4rem;
+    border: none;
+    border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a class="nav-logo" href="#">CO</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#upwork">Freelance</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="mailto:chukwudi.ogbekile@example.com">Hire Me</a>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <p class="hero-eyebrow">AI Scientist & Data Engineer</p>
+    <h1>Building the<br><span class="highlight">Data Layer</span><br>That Powers AI</h1>
+    <p class="hero-desc">
+      I architect end-to-end data systems — from ETL pipelines and data warehouses to LLM training and BI dashboards — helping organizations turn raw data into intelligent decisions.
+    </p>
+    <div class="hero-actions">
+      <a href="#portfolio" class="btn-primary">View Portfolio ↓</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div>
+      <div class="status-badge">
+        <span class="status-dot"></span>
+        Available for remote roles
+      </div>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">Job Success<br>on Upwork</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">18+</span>
+        <span class="stat-label">Completed<br>Projects</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">4+</span>
+        <span class="stat-label">Years of Data<br>Engineering</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">$10K+</span>
+        <span class="stat-label">Upwork Total<br>Earnings</span>
+      </div>
+    </div>
+    <div class="tech-tags">
+      <span class="tech-tag">Python</span>
+      <span class="tech-tag">BigQuery</span>
+      <span class="tech-tag">Snowflake</span>
+      <span class="tech-tag">DBT</span>
+      <span class="tech-tag">Apache Airflow</span>
+      <span class="tech-tag">GCP</span>
+      <span class="tech-tag">AWS Glue</span>
+      <span class="tech-tag">Airbyte</span>
+      <span class="tech-tag">LLMs</span>
+      <span class="tech-tag">PySpark</span>
+      <span class="tech-tag">Power BI</span>
+      <span class="tech-tag">Metabase</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ABOUT ─── -->
+<section id="about">
+  <div class="section-label">About Me</div>
+  <div class="about-grid">
+    <div class="about-text">
+      <h2 class="section-title">Data-Driven.<br>Systems-Focused.<br>Impact-Oriented.</h2>
+      <p>I'm <strong>Chukwudi (Samuel) Ogbekile</strong> — an AI Scientist and Data Engineer based in Abuja, Nigeria. I build the infrastructure that makes intelligent systems possible: scalable pipelines, clean data warehouses, and the training frameworks that shape modern LLMs.</p>
+      <p>With a <strong>First-Class degree in Electrical & Electronics Engineering</strong> and a <strong>distinction in MSc Financial Engineering</strong>, I bridge engineering rigor with business analytics — deploying ML models, building observability systems, and automating data workflows across GCP, AWS, and on-premise environments.</p>
+      <p>Currently helping <strong>Turing</strong> clients develop LLM products, and managing a private client's full data ecosystem as a freelance Data Engineer on Upwork — where I hold a <strong>100% Job Success Score</strong> and Top Rated Plus status.</p>
+      <p>Passionate about AI model improvement, energy sector analytics, and mentoring the next generation of data professionals.</p>
+    </div>
+    <div>
+      <div class="section-label" style="margin-bottom:1.5rem;">Education</div>
+      <div class="education-list">
+        <div class="edu-item">
+          <div class="edu-degree">MSc, Financial Engineering</div>
+          <div class="edu-school">WorldQuant University (USA)</div>
+          <div class="edu-meta">2020 — 2022 · Grade: 95/100 · Distinction</div>
+          <div><span class="award-badge">🏆 Final Project: GARCH & Markov-Switching Model on COVID-19 Impact</span></div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-degree">BEng, Electrical & Electronics Engineering</div>
+          <div class="edu-school">University of Lagos</div>
+          <div class="edu-meta">2015 — 2019 · First Class Honours</div>
+          <div><span class="award-badge">🏆 MTN Foundation Scholarship 2018</span></div>
+          <div style="margin-top:0.4rem;"><span class="award-badge">🏆 First Class Endowment Award — 2016, 2017, 2018, 2019</span></div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-degree">Best Graduating Student — Computer Engineering</div>
+          <div class="edu-school">Yaba College of Technology</div>
+          <div class="edu-meta">2015 · Award</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── EXPERTISE ─── -->
+<section id="expertise">
+  <div class="section-label">Areas of Expertise</div>
+  <h2 class="section-title">What I Build</h2>
+  <div class="expertise-grid">
+    <div class="expertise-card">
+      <div class="card-icon">⚡</div>
+      <div class="card-title">Data Engineering & ETL Pipelines</div>
+      <div class="card-desc">Architecting scalable batch and streaming pipelines that replicate data from MongoDB, Firebase, and MySQL into cloud data warehouses with reliability and performance.</div>
+      <div class="card-tools">
+        <span class="tool-pill">Apache Airflow</span>
+        <span class="tool-pill">AWS Glue</span>
+        <span class="tool-pill">Airbyte</span>
+        <span class="tool-pill">FiveTran</span>
+        <span class="tool-pill">PySpark</span>
+        <span class="tool-pill">Python</span>
+      </div>
+    </div>
+    <div class="expertise-card">
+      <div class="card-icon">🧠</div>
+      <div class="card-title">LLM Training & AI Development</div>
+      <div class="card-desc">Training, evaluating, and fine-tuning large language models. Leading human labeling programs and providing quality feedback that improves model efficiency and accuracy.</div>
+      <div class="card-tools">
+        <span class="tool-pill">LLM Fine-tuning</span>
+        <span class="tool-pill">RLHF</span>
+        <span class="tool-pill">Code Review</span>
+        <span class="tool-pill">Model Evaluation</span>
+      </div>
+    </div>
+    <div class="expertise-card">
+      <div class="card-icon">☁️</div>
+      <div class="card-title">Cloud Data Warehousing</div>
+      <div class="card-desc">Designing and managing data warehouse environments on GCP BigQuery, Snowflake, and Amazon Redshift with schema optimization reducing query time by up to 70%.</div>
+      <div class="card-tools">
+        <span class="tool-pill">BigQuery</span>
+        <span class="tool-pill">Snowflake</span>
+        <span class="tool-pill">Redshift</span>
+        <span class="tool-pill">GCP</span>
+        <span class="tool-pill">AWS</span>
+      </div>
+    </div>
+    <div class="expertise-card">
+      <div class="card-icon">🔧</div>
+      <div class="card-title">Analytics Engineering with DBT</div>
+      <div class="card-desc">Building transformation layers with DBT to deliver clean, tested, and documented datasets ready for BI consumption. Implementing CI/CD for data pipelines.</div>
+      <div class="card-tools">
+        <span class="tool-pill">DBT</span>
+        <span class="tool-pill">SQL</span>
+        <span class="tool-pill">Git</span>
+        <span class="tool-pill">Cloud Build</span>
+        <span class="tool-pill">GitLab CI</span>
+      </div>
+    </div>
+    <div class="expertise-card">
+      <div class="card-icon">📊</div>
+      <div class="card-title">Data Visualization & BI</div>
+      <div class="card-desc">Building dashboards and observability systems that reduce time-to-insight from days to seconds. Saved 15+ hours of manual reporting per week for client teams.</div>
+      <div class="card-tools">
+        <span class="tool-pill">Metabase</span>
+        <span class="tool-pill">Looker Studio</span>
+        <span class="tool-pill">Power BI</span>
+        <span class="tool-pill">Tableau</span>
+        <span class="tool-pill">Sigma</span>
+        <span class="tool-pill">Streamlit</span>
+      </div>
+    </div>
+    <div class="expertise-card">
+      <div class="card-icon">🤖</div>
+      <div class="card-title">Machine Learning & Financial Modelling</div>
+      <div class="card-desc">Applying XGBoost, neural networks, and statistical models (GARCH, Black-Scholes, Markov-Switching) to solve real business problems in finance, energy, and product analytics.</div>
+      <div class="card-tools">
+        <span class="tool-pill">XGBoost</span>
+        <span class="tool-pill">Scikit-learn</span>
+        <span class="tool-pill">AWS SageMaker</span>
+        <span class="tool-pill">Python</span>
+        <span class="tool-pill">R</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── EXPERIENCE ─── -->
+<section id="experience">
+  <div class="section-label">Experience</div>
+  <h2 class="section-title">Work History</h2>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-meta">Sep 2023 — Present · Contract · Remote</div>
+      <div class="timeline-role">AI Trainer</div>
+      <div class="timeline-company">Turing</div>
+      <ul class="timeline-points">
+        <li>Helping Turing clients develop LLM products through model training, code review, and multi-modal AI evaluation.</li>
+        <li>Pioneered the first human labeling program for ML models at Turing, now a critical step in the ML development lifecycle.</li>
+        <li>Providing deep qualitative feedback on model outputs, improving accuracy and efficiency of production AI systems.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-meta">Jun 2023 — Mar 2024 · Full-time · Abuja, Nigeria</div>
+      <div class="timeline-role">Data Analytics Manager</div>
+      <div class="timeline-company">BuyPower (YC W17)</div>
+      <ul class="timeline-points">
+        <li>Led a team of 3 data engineers in improving ETL architecture, reducing operational costs by 40%.</li>
+        <li>Built observability systems giving multiple teams real-time insight, reducing time-to-insight from days to seconds.</li>
+        <li>Implemented schema and query optimizations reducing overall query execution time by up to 70%.</li>
+        <li>Conducted financial analysis on B2B and B2C transactions leading to recovery of tens of millions of naira in debt.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-meta">Sep 2021 — Jun 2023 · Full-time · Abuja, Nigeria</div>
+      <div class="timeline-role">Data Engineer</div>
+      <div class="timeline-company">BuyPower (YC W17)</div>
+      <ul class="timeline-points">
+        <li>Designed batch and streaming pipelines replicating logs from MongoDB, Firebase, and MySQL (Amazon RDS) to BigQuery.</li>
+        <li>Developed Google Data Studio dashboards answering critical business questions for multiple teams and clients.</li>
+        <li>Saved 15 hours of manual reporting work per week through automated dashboard solutions.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-meta">Sep 2021 — Present · Freelance · Remote</div>
+      <div class="timeline-role">Data Analytic Engineer</div>
+      <div class="timeline-company">Upwork (Independent)</div>
+      <ul class="timeline-points">
+        <li>Managing full data ecosystem for a private client using Snowflake, Airbyte, Sigma, DBT, AWS EC2, and Lambda.</li>
+        <li>Built dynamic ETL pipeline migrating 60+ Amazon marketing CSV URLs to BigQuery via Python on GCP VM with CRON.</li>
+        <li>Reduced GCP Cloud Composer pipeline costs by 85%+ using CI/CD, Cloud Builder, and Cloud Triggers.</li>
+        <li>Built ETL pipeline for ~80GB tabular datasets using AWS Glue and developed XGBoost model on AWS SageMaker.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-meta">Jun 2022 — Aug 2022 · Full-time · Remote</div>
+      <div class="timeline-role">Data Scientist</div>
+      <div class="timeline-company">Turing.com</div>
+      <ul class="timeline-points">
+        <li>Built data migration pipelines and ETL processes using Apache Airflow, GCP, and BigQuery.</li>
+        <li>Collaborated on data QA to identify and resolve quality issues in product development workflows.</li>
+        <li>Tested and provided feedback for ML models, leading to measurable improvements in efficiency and accuracy.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── PORTFOLIO ─── -->
+<section id="portfolio">
+  <div class="section-label">GitHub Portfolio</div>
+  <h2 class="section-title">Selected Projects</h2>
+  <div class="portfolio-grid">
+
+    <a class="project-card" href="https://github.com/ogbeks/ETL-pipeline" target="_blank">
+      <div class="project-number">01</div>
+      <div class="project-title">Data2Bot ETL Pipeline — PostgreSQL & S3</div>
+      <div class="project-desc">Structured, OOP-based ETL pipeline that extracts raw data from S3 buckets, stages it in PostgreSQL, and exports analytics results back to S3. Built with Python, SQL, and structured directory architecture inspired by production-grade data systems.</div>
+      <div class="project-tags">
+        <span class="project-tag">Python</span>
+        <span class="project-tag">PostgreSQL</span>
+        <span class="project-tag">AWS S3</span>
+        <span class="project-tag">SQL</span>
+        <span class="project-tag">OOP</span>
+      </div>
+    </a>
+
+    <a class="project-card" href="https://github.com/ogbeks/remote-agentic-coding-system" target="_blank">
+      <div class="project-number">02</div>
+      <div class="project-title">Remote Agentic Coding System</div>
+      <div class="project-desc">An agentic system designed for remote code execution and workflow automation, leveraging modern AI agent architecture patterns for autonomous task completion in data engineering contexts.</div>
+      <div class="project-tags">
+        <span class="project-tag">AI Agents</span>
+        <span class="project-tag">Python</span>
+        <span class="project-tag">Automation</span>
+      </div>
+    </a>
+
+    <a class="project-card" href="https://github.com/ogbeks/sitruna_backfill" target="_blank">
+      <div class="project-number">03</div>
+      <div class="project-title">Siturna — Amazon Marketing Backfill UI</div>
+      <div class="project-desc">An iterative visualization UI for backfilling Amazon marketing data into BigQuery. Built with Streamlit and Flask, hosted on Google App Engine. Handles 60+ CSV data URLs through an automated GCP pipeline.</div>
+      <div class="project-tags">
+        <span class="project-tag">Streamlit</span>
+        <span class="project-tag">Flask</span>
+        <span class="project-tag">BigQuery</span>
+        <span class="project-tag">GCP App Engine</span>
+      </div>
+    </a>
+
+    <a class="project-card" href="https://github.com/ogbeks/griddb-kafka-stream" target="_blank">
+      <div class="project-number">04</div>
+      <div class="project-title">GridDB Kafka Streaming Pipeline</div>
+      <div class="project-desc">Real-time data streaming pipeline integrating GridDB with Apache Kafka. Demonstrates expertise in event-driven architectures and high-throughput data ingestion patterns for modern data platforms.</div>
+      <div class="project-tags">
+        <span class="project-tag">Apache Kafka</span>
+        <span class="project-tag">GridDB</span>
+        <span class="project-tag">Streaming</span>
+        <span class="project-tag">Python</span>
+      </div>
+    </a>
+
+    <a class="project-card" href="https://github.com/ogbeks/web3_dex_dashboard" target="_blank">
+      <div class="project-number">05</div>
+      <div class="project-title">Web3 DEX Analytics Dashboard</div>
+      <div class="project-desc">Decentralized exchange analytics dashboard tracking on-chain trading activity, liquidity metrics, and volume trends. Applied data engineering and visualization skills to the blockchain data domain.</div>
+      <div class="project-tags">
+        <span class="project-tag">Web3</span>
+        <span class="project-tag">Python</span>
+        <span class="project-tag">Analytics</span>
+        <span class="project-tag">Dashboarding</span>
+      </div>
+    </a>
+
+    <a class="project-card" href="https://github.com/ogbeks/de-zoomcamp" target="_blank">
+      <div class="project-number">06</div>
+      <div class="project-title">Data Engineering Zoomcamp Projects</div>
+      <div class="project-desc">End-to-end data engineering projects covering containerization, workflow orchestration, data warehousing, batch and stream processing — built through the DataTalks.Club DE Zoomcamp curriculum.</div>
+      <div class="project-tags">
+        <span class="project-tag">Docker</span>
+        <span class="project-tag">Terraform</span>
+        <span class="project-tag">BigQuery</span>
+        <span class="project-tag">Airflow</span>
+        <span class="project-tag">Spark</span>
+      </div>
+    </a>
+
+  </div>
+  <div style="margin-top:1.5rem;text-align:right;">
+    <a href="https://github.com/ogbeks" target="_blank" class="btn-outline" style="display:inline-flex;align-items:center;gap:0.5rem;">
+      View All Repositories on GitHub ↗
+    </a>
+  </div>
+</section>
+
+<!-- ─── UPWORK / FREELANCE ─── -->
+<section id="upwork">
+  <div class="section-label">Freelance Work</div>
+  <h2 class="section-title">Upwork Track Record</h2>
+
+  <div class="upwork-hero">
+    <div>
+      <div class="upwork-badge">⭐ Top Rated Plus · Verified Identity</div>
+      <p style="color:var(--text-muted);line-height:1.7;font-size:0.97rem;margin-bottom:1.5rem;">
+        On Upwork, I specialize in Data Engineering, ETL, ML, and Analytics projects for clients across industries. Every contract closed with a 5.0 rating — a track record built on clear communication, technical depth, and delivering results that go beyond scope.
+      </p>
+      <a href="https://www.upwork.com/freelancers/~chukwudiogbekile" target="_blank" class="btn-outline">View Upwork Profile ↗</a>
+    </div>
+    <div class="upwork-stats">
+      <div class="upwork-stat">
+        <div class="upwork-stat-num">100%</div>
+        <div class="upwork-stat-lbl">Job Success</div>
+      </div>
+      <div class="upwork-stat">
+        <div class="upwork-stat-num">18</div>
+        <div class="upwork-stat-lbl">Total Jobs</div>
+      </div>
+      <div class="upwork-stat">
+        <div class="upwork-stat-num">830+</div>
+        <div class="upwork-stat-lbl">Total Hours</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="testimonials-grid">
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-text">"Samuel is a fantastic developer. He always works professionally and is very solution-oriented. I highly recommend him and will definitely work with him again."</div>
+      <div class="testimonial-meta">Data Engineer for Automated Analytics Pipeline · Jan 2026</div>
+    </div>
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-text">"Samuel showcased skill and diligence while working on our DBT project with BigQuery. His hard work greatly contributed to the project's success. Recommended, and I would hire again."</div>
+      <div class="testimonial-meta">BigQuery & DBT Expert for Data Analytics · Sep 2023</div>
+    </div>
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-text">"Samuel did a great job on ETL and ML tasks using Amazon Web Services capabilities. We'd be happy to work with this freelancer again."</div>
+      <div class="testimonial-meta">AWS ETL & ML Project · Upwork Enterprise Client · Jul 2023</div>
+    </div>
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-text">"Great quality of work. 100% true Python and Pandas specialist. Would recommend anyone who is solving python web scraping and will hire again."</div>
+      <div class="testimonial-meta">Data Extraction / Web Scraping · Aug 2021</div>
+    </div>
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-text">"Mr. Samuel Ogbekile is very meticulous in his work. He delivered more than what we asked for!"</div>
+      <div class="testimonial-meta">Crypto Trading Script · Jan 2022</div>
+    </div>
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-text">"Thx for the work on our data warehouse, dbt and metabase. It was a pleasure working with you. Closing the contract because the project is over."</div>
+      <div class="testimonial-meta">DBT & BI Reports Creation · Apr 2024</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-label">Get in Touch</div>
+    <h2 class="contact-tagline">Let's Build<br>Something <span class="outline">Meaningful</span></h2>
+    <p class="contact-desc">Open to remote Data Engineering, AI Engineering, and Analytics Engineering roles. Also available for freelance collaborations on data infrastructure, LLM projects, and analytics systems.</p>
+
+    <div class="contact-links">
+      <a class="contact-link" href="https://www.linkedin.com/in/chukwudi-ogbekile/" target="_blank">
+        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a class="contact-link" href="https://github.com/ogbeks" target="_blank">
+        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        GitHub
+      </a>
+      <a class="contact-link" href="https://www.upwork.com/freelancers/~chukwudiogbekile" target="_blank">
+        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.546-1.405 0-2.543-1.14-2.543-2.546V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
+        Upwork
+      </a>
+    </div>
+
+    <a class="contact-email" href="mailto:ogbekilesamuel@gmail.com">ogbekilesamuel@gmail.com</a>
+    <p style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--text-dim);letter-spacing:0.05em;">Available for remote collaborations worldwide · Typically responds within 4 hours</p>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <span class="footer-copy">© 2026 Chukwudi Ogbekile. Built for GitHub Pages.</span>
+  <div class="footer-links">
+    <a href="https://github.com/ogbeks" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/chukwudi-ogbekile/" target="_blank">LinkedIn</a>
+    <a href="https://www.upwork.com/freelancers/~chukwudiogbekile" target="_blank">Upwork</a>
+  </div>
+</footer>
+
+<script>
+  // Smooth reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.expertise-card, .project-card, .timeline-item, .testimonial, .stat-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
