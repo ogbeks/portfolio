@@ -613,6 +613,8 @@
     transform: translate(2px, -2px);
   }
 
+  .project-card[style*="cursor:default"]::after { display: none; }
+
   .project-number {
     font-family: 'Space Mono', monospace;
     font-size: 0.65rem;
@@ -890,6 +892,29 @@
   .hero-desc { animation-delay: 0.3s; }
   .hero-actions { animation-delay: 0.4s; }
 
+  /* ─── SKILL BADGES ─── */
+  .skill-badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    padding: 0.35rem 0.85rem;
+    border: 1px solid;
+    letter-spacing: 0.04em;
+    transition: opacity 0.2s, transform 0.15s;
+    cursor: default;
+    white-space: nowrap;
+  }
+
+  .skill-badge:hover { opacity: 0.75; transform: translateY(-1px); }
+
+  .skill-badge.lang  { color: #00C8FF; border-color: rgba(0,200,255,0.3);  background: rgba(0,200,255,0.06); }
+  .skill-badge.db    { color: #00FF9D; border-color: rgba(0,255,157,0.3);  background: rgba(0,255,157,0.06); }
+  .skill-badge.de    { color: #C084FC; border-color: rgba(192,132,252,0.3); background: rgba(192,132,252,0.06); }
+  .skill-badge.cloud { color: #38BDF8; border-color: rgba(56,189,248,0.3); background: rgba(56,189,248,0.06); }
+  .skill-badge.devops{ color: #FB923C; border-color: rgba(251,146,60,0.3); background: rgba(251,146,60,0.06); }
+  .skill-badge.ai    { color: #F472B6; border-color: rgba(244,114,182,0.3); background: rgba(244,114,182,0.06); }
+  .skill-badge.viz   { color: #FBBF24; border-color: rgba(251,191,36,0.3); background: rgba(251,191,36,0.06); }
+  .skill-badge.mgmt  { color: #A3E635; border-color: rgba(163,230,53,0.3); background: rgba(163,230,53,0.06); }
+
   /* ─── SCROLLBAR ─── */
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
@@ -908,6 +933,7 @@
     .expertise-grid, .testimonials-grid { grid-template-columns: 1fr; }
     .portfolio-grid { grid-template-columns: 1fr; }
     .upwork-stats { grid-template-columns: repeat(3, 1fr); }
+    #skills [style*="grid-template-columns:220px"] { grid-template-columns: 1fr; gap: 0.75rem; }
   }
 
   /* horizontal rule flourish */
@@ -931,10 +957,12 @@
     <li><a href="#expertise">Expertise</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#skills">Skills</a></li>
     <li><a href="#upwork">Freelance</a></li>
+    <li><a href="#community">Community</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a class="nav-cta" href="mailto:ogbekilechukwudi.com">Hire Me</a>
+  <a class="nav-cta" href="mailto:ogbekilechukwudi@gmail.com">Hire Me</a>
 </nav>
 
 <!-- ─── HERO ─── -->
@@ -963,31 +991,32 @@
         <span class="stat-label">Job Success<br>on Upwork</span>
       </div>
       <div class="stat-item">
-        <span class="stat-number">18+</span>
-        <span class="stat-label">Completed<br>Projects</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">4+</span>
+        <span class="stat-number">5+</span>
         <span class="stat-label">Years of Data<br>Engineering</span>
       </div>
       <div class="stat-item">
-        <span class="stat-number">$10K+</span>
-        <span class="stat-label">Upwork Total<br>Earnings</span>
+        <span class="stat-number">85%+</span>
+        <span class="stat-label">Pipeline Cost<br>Reduction</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">70%</span>
+        <span class="stat-label">Query Time<br>Reduction</span>
       </div>
     </div>
     <div class="tech-tags">
       <span class="tech-tag">Python</span>
+      <span class="tech-tag">SQL</span>
+      <span class="tech-tag">Java</span>
       <span class="tech-tag">BigQuery</span>
-      <span class="tech-tag">Snowflake</span>
+      <span class="tech-tag">PostgreSQL</span>
       <span class="tech-tag">DBT</span>
       <span class="tech-tag">Apache Airflow</span>
-      <span class="tech-tag">GCP</span>
-      <span class="tech-tag">AWS Glue</span>
-      <span class="tech-tag">Airbyte</span>
-      <span class="tech-tag">Airflow</span>
-      <span class="tech-tag">LLMs</span>
-      <span class="tech-tag">PySpark</span>
-      <span class="tech-tag">Power BI</span>
+      <span class="tech-tag">Kafka</span>
+      <span class="tech-tag">Terraform</span>
+      <span class="tech-tag">GitHub Actions</span>
+      <span class="tech-tag">Claude Code</span>
+      <span class="tech-tag">Jira</span>
+      <span class="tech-tag">LLMs / RLHF</span>
       <span class="tech-tag">Metabase</span>
     </div>
   </div>
@@ -999,24 +1028,24 @@
   <div class="about-grid">
     <div class="about-text">
       <h2 class="section-title">Data-Driven.<br>Systems-Focused.<br>Impact-Oriented.</h2>
-      <p>I'm <strong>Chukwudi (Samuel) Ogbekile</strong> — an AI Scientist and Data Engineer. I build the infrastructure that makes intelligent systems possible: scalable pipelines, clean data warehouses, and the training frameworks that shape modern LLMs.</p>
-      <p>With a <strong>First-Class degree in Electrical & Electronics Engineering</strong> and a <strong>distinction in MSc Financial Engineering</strong>, I bridge engineering rigor with business analytics — deploying ML models, building observability systems, and automating data workflows across GCP, AWS, and on-premise environments.</p>
-      <p>Currently helping <strong>Turing</strong> clients develop LLM products, and managing a private client's full data ecosystem as a freelance Data Engineer on Upwork — where I hold a <strong>100% Job Success Score</strong> and Top Rated Plus status.</p>
-      <p>Passionate about AI model improvement, energy sector analytics, and mentoring the next generation of data professionals.</p>
+      <p>I'm <strong>Chukwudi (Samuel) Ogbekile</strong> — an AI Scientist and Data Engineer based in Abuja, Nigeria. I design and build the full data infrastructure that powers intelligent systems: from batch and streaming pipelines to cloud warehouses, LLM training pipelines, and executive BI dashboards.</p>
+      <p>With a <strong>First-Class degree in Electrical & Electronics Engineering (4.66/5.0)</strong> from the University of Lagos and a <strong>distinction in MSc Financial Engineering (95/100)</strong> from WorldQuant University, I bring engineering precision to every layer of the data stack — from schema design and query optimization to ML model deployment on AWS SageMaker.</p>
+      <p>Currently training AI models at <strong>Turing</strong> across campaigns including function calling API, SWE Benchmark for GitHub issue resolution, and code evaluation — while also managing client data ecosystems as a <strong>Top Rated Plus freelancer on Upwork</strong> with a 100% Job Success Score.</p>
+      <p>Previously <strong>Lead Data Engineer at BuyPower (YC W17)</strong>, leading a team of 5 engineers, reducing operational costs by 60%, and cutting query execution times by 70%. Passionate about energy data, AI model improvement, and mentoring the next generation of engineers.</p>
     </div>
     <div>
       <div class="section-label" style="margin-bottom:1.5rem;">Education</div>
       <div class="education-list">
         <div class="edu-item">
           <div class="edu-degree">MSc, Financial Engineering</div>
-          <div class="edu-school">WorldQuant University (USA)</div>
-          <div class="edu-meta">2020 — 2022 · Grade: 95/100 · Distinction</div>
+          <div class="edu-school">WorldQuant University (New Orleans, USA)</div>
+          <div class="edu-meta">Apr 2020 — Feb 2022 · Grade: 95/100 · Distinction</div>
           <div><span class="award-badge">🏆 Final Project: GARCH & Markov-Switching Model on COVID-19 Impact</span></div>
         </div>
         <div class="edu-item">
           <div class="edu-degree">BSc, Electrical & Electronics Engineering</div>
           <div class="edu-school">University of Lagos</div>
-          <div class="edu-meta">2015 — 2019 · First Class Honours</div>
+          <div class="edu-meta">Dec 2015 — Jan 2020 · GPA: 4.66/5.0 · First Class Honours</div>
           <div><span class="award-badge">🏆 MTN Foundation Scholarship 2018</span></div>
           <div style="margin-top:0.4rem;"><span class="award-badge">🏆 First Class Endowment Award — 2016, 2017, 2018, 2019</span></div>
         </div>
@@ -1038,73 +1067,79 @@
     <div class="expertise-card">
       <div class="card-icon">⚡</div>
       <div class="card-title">Data Engineering & ETL Pipelines</div>
-      <div class="card-desc">Architecting scalable batch and streaming pipelines that replicate data from MongoDB, Firebase, and MySQL into cloud data warehouses with reliability and performance.</div>
+      <div class="card-desc">Architecting scalable batch and streaming pipelines replicating data from MongoDB, Firebase, and MySQL into cloud warehouses. Reduced GCP pipeline costs by 85%+ through CI/CD implementation.</div>
       <div class="card-tools">
         <span class="tool-pill">Apache Airflow</span>
         <span class="tool-pill">AWS Glue</span>
         <span class="tool-pill">Airbyte</span>
-        <span class="tool-pill">FiveTran</span>
-        <span class="tool-pill">PySpark</span>
-        <span class="tool-pill">Python</span>
+        <span class="tool-pill">Kafka</span>
+        <span class="tool-pill">Fivetran</span>
+        <span class="tool-pill">Terraform</span>
+        <span class="tool-pill">Docker</span>
       </div>
     </div>
     <div class="expertise-card">
       <div class="card-icon">🧠</div>
       <div class="card-title">LLM Training & AI Development</div>
-      <div class="card-desc">Training, evaluating, and fine-tuning large language models. Leading human labeling programs and providing quality feedback that improves model efficiency and accuracy.</div>
+      <div class="card-desc">Training and evaluating LLMs via RLHF data curation, function calling API campaigns, SWE Benchmark for GitHub issue resolution, and code evaluation to improve AI assistant performance.</div>
       <div class="card-tools">
-        <span class="tool-pill">LLM Fine-tuning</span>
         <span class="tool-pill">RLHF</span>
-        <span class="tool-pill">Code Review</span>
+        <span class="tool-pill">Function Calling API</span>
+        <span class="tool-pill">SWE Benchmark</span>
         <span class="tool-pill">Model Evaluation</span>
+        <span class="tool-pill">F1 / Precision / Recall</span>
       </div>
     </div>
     <div class="expertise-card">
       <div class="card-icon">☁️</div>
       <div class="card-title">Cloud Data Warehousing</div>
-      <div class="card-desc">Designing and managing data warehouse environments on GCP BigQuery, Snowflake, and Amazon Redshift with schema optimization reducing query time by up to 70%.</div>
+      <div class="card-desc">Designing and managing data warehouse environments on GCP BigQuery, Snowflake, and Amazon Redshift. Schema and query optimizations that cut execution times by 70%.</div>
       <div class="card-tools">
         <span class="tool-pill">BigQuery</span>
         <span class="tool-pill">Snowflake</span>
         <span class="tool-pill">Redshift</span>
-        <span class="tool-pill">GCP</span>
-        <span class="tool-pill">AWS</span>
+        <span class="tool-pill">Cloud SQL</span>
+        <span class="tool-pill">Supabase</span>
+        <span class="tool-pill">AWS RDS</span>
       </div>
     </div>
     <div class="expertise-card">
       <div class="card-icon">🔧</div>
       <div class="card-title">Analytics Engineering with DBT</div>
-      <div class="card-desc">Building transformation layers with DBT to deliver clean, tested, and documented datasets ready for BI consumption. Implementing CI/CD for data pipelines.</div>
+      <div class="card-desc">Building observability and transformation layers with DBT. Implementing CI/CD for data pipelines using Cloud Build, Cloud Triggers, and GitHub Actions. Reduced costs 85%+.</div>
       <div class="card-tools">
         <span class="tool-pill">DBT</span>
-        <span class="tool-pill">SQL</span>
-        <span class="tool-pill">Git</span>
+        <span class="tool-pill">GitHub Actions</span>
         <span class="tool-pill">Cloud Build</span>
+        <span class="tool-pill">Jenkins</span>
+        <span class="tool-pill">SQL</span>
         <span class="tool-pill">GitLab CI</span>
       </div>
     </div>
     <div class="expertise-card">
       <div class="card-icon">📊</div>
       <div class="card-title">Data Visualization & BI</div>
-      <div class="card-desc">Building dashboards and observability systems that reduce time-to-insight from days to seconds. Saved 15+ hours of manual reporting per week for client teams.</div>
+      <div class="card-desc">Building multi-team dashboards and observability systems. Saved 15+ hours of manual reporting weekly. Delivered KPI sales reports that drove 40% annual revenue growth for clients.</div>
       <div class="card-tools">
-        <span class="tool-pill">Metabase</span>
         <span class="tool-pill">Looker Studio</span>
+        <span class="tool-pill">Metabase</span>
         <span class="tool-pill">Power BI</span>
         <span class="tool-pill">Tableau</span>
-        <span class="tool-pill">Sigma</span>
+        <span class="tool-pill">Mode</span>
+        <span class="tool-pill">R Shiny</span>
         <span class="tool-pill">Streamlit</span>
       </div>
     </div>
     <div class="expertise-card">
       <div class="card-icon">🤖</div>
       <div class="card-title">Machine Learning & Financial Modelling</div>
-      <div class="card-desc">Applying XGBoost, neural networks, and statistical models (GARCH, Black-Scholes, Markov-Switching) to solve real business problems in finance, energy, and product analytics.</div>
+      <div class="card-desc">Deploying XGBoost, neural networks, and statistical models (GARCH, Black-Scholes, Markov-Switching) in production. Built ML models on BigQuery and AWS SageMaker for real business outcomes.</div>
       <div class="card-tools">
         <span class="tool-pill">XGBoost</span>
         <span class="tool-pill">Scikit-learn</span>
+        <span class="tool-pill">Keras</span>
         <span class="tool-pill">AWS SageMaker</span>
-        <span class="tool-pill">Python</span>
+        <span class="tool-pill">Apache Spark</span>
         <span class="tool-pill">R</span>
       </div>
     </div>
@@ -1119,47 +1154,38 @@
 
     <div class="timeline-item">
       <div class="timeline-meta">Sep 2023 — Present · Contract · Remote</div>
-      <div class="timeline-role">AI Trainer</div>
+      <div class="timeline-role">AI Scientist / Trainer</div>
       <div class="timeline-company">Turing</div>
       <ul class="timeline-points">
-        <li>Helping Turing clients develop LLM products through model training, code review, and multi-modal AI evaluation.</li>
-        <li>Pioneered the first human labeling program for ML models at Turing, now a critical step in the ML development lifecycle.</li>
-        <li>Providing deep qualitative feedback on model outputs, improving accuracy and efficiency of production AI systems.</li>
+        <li>Developing and training AI models by curating LLM and RLHF data, and adjusting parameters to optimize performance.</li>
+        <li>Collaborated on function calling API campaign responsible for GPT model building, and SWE Benchmark to facilitate GitHub code issue resolution.</li>
+        <li>Participated in code evaluation campaigns to improve AI assistant response quality across multiple programming languages.</li>
+        <li>Assessing model performance using precision, recall, and F1 score metrics, and implementing targeted improvements based on evaluation results.</li>
       </ul>
     </div>
 
     <div class="timeline-item">
-      <div class="timeline-meta">Jun 2023 — Mar 2024 · Full-time · Abuja, Nigeria</div>
-      <div class="timeline-role">Data Analytics Manager</div>
-      <div class="timeline-company">BuyPower (YC W17)</div>
+      <div class="timeline-meta">Sep 2021 — Mar 2024 · Full-time · Abuja, Nigeria</div>
+      <div class="timeline-role">Lead Data Engineer</div>
+      <div class="timeline-company">BuyPower (YC W17) · buypower.ng</div>
       <ul class="timeline-points">
-        <li>Led a team of 5 data engineers in improving ETL architecture, reducing operational costs by 40%.</li>
-        <li>Built observability systems giving multiple teams real-time insight, reducing time-to-insight from days to seconds.</li>
-        <li>Implemented schema and query optimizations reducing overall query execution time by up to 70%.</li>
-        <li>Conducted financial analysis on B2B and B2C transactions leading to recovery of tens of millions of naira in debt.</li>
-      </ul>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-meta">Sep 2021 — Jun 2023 · Full-time · Abuja, Nigeria</div>
-      <div class="timeline-role">Data Engineer</div>
-      <div class="timeline-company">BuyPower (YC W17)</div>
-      <ul class="timeline-points">
-        <li>Designed batch and streaming pipelines replicating logs from MongoDB, Firebase, and MySQL (Amazon RDS) to BigQuery.</li>
-        <li>Developed Google Data Studio dashboards answering critical business questions for multiple teams and clients.</li>
-        <li>Saved 15 hours of manual reporting work per week through automated dashboard solutions.</li>
+        <li>Designed batch and streaming pipelines replicating logs from MongoDB, Firebase, and MySQL (Amazon RDS) into BigQuery data warehouse.</li>
+        <li>Led a team of 5 data engineers collaborating with engineering management to improve ETL architecture and reduce operational costs by 60%.</li>
+        <li>Built DBT-based observability ETL systems, reducing time-to-insight from days to seconds across multiple teams.</li>
+        <li>Implemented schema and query optimization techniques reducing overall query execution time by 70%.</li>
+        <li>Automated reporting in Looker Studio saving 15+ hours of manual work per week; conducted financial analysis recovering tens of millions of naira.</li>
       </ul>
     </div>
 
     <div class="timeline-item">
       <div class="timeline-meta">Sep 2021 — Present · Freelance · Remote</div>
-      <div class="timeline-role">Data Analytic Engineer</div>
-      <div class="timeline-company">Upwork (Independent)</div>
+      <div class="timeline-role">Data Analytics Engineer (Top Rated Plus)</div>
+      <div class="timeline-company">Upwork</div>
       <ul class="timeline-points">
-        <li>Managing full data ecosystem for a private client using Snowflake, Airbyte, Sigma, DBT, AWS EC2, and Lambda.</li>
-        <li>Built dynamic ETL pipeline migrating 60+ Amazon marketing CSV URLs to BigQuery via Python on GCP VM with CRON.</li>
-        <li>Reduced GCP Cloud Composer pipeline costs by 85%+ using CI/CD, Cloud Builder, and Cloud Triggers.</li>
-        <li>Built ETL pipeline for ~80GB tabular datasets using AWS Glue and developed XGBoost model on AWS SageMaker.</li>
+        <li>Built end-to-end ETL pipeline migrating 60+ Amazon Seller CSV reports into BigQuery using GCP VM, Python, FastAPI, and Streamlit backfill UI. (Siturna)</li>
+        <li>Reduced GCP Cloud Composer 2 pipeline costs by over 85% via CI/CD tools, Cloud Build, Cloud Triggers, and Scheduler. (WebVerif)</li>
+        <li>Built ETL pipeline for ~80GB tabular datasets with AWS Glue and developed XGBoost ML model to predict NYC taxi prices on AWS SageMaker. (Confidential)</li>
+        <li>Delivered data-driven insights for multinational clients using Python, Metabase, DBT, BigQuery, and GitLab. (Équipe Totem Inc.)</li>
       </ul>
     </div>
 
@@ -1168,9 +1194,30 @@
       <div class="timeline-role">Data Scientist</div>
       <div class="timeline-company">Turing.com</div>
       <ul class="timeline-points">
-        <li>Built data migration pipelines and ETL processes using Apache Airflow, GCP, and BigQuery.</li>
+        <li>Built data migration pipelines and ETL processes using Apache Airflow, GCP, and BigQuery, improving data accuracy and efficiency.</li>
         <li>Collaborated on data QA to identify and resolve quality issues in product development workflows.</li>
-        <li>Tested and provided feedback for ML models, leading to measurable improvements in efficiency and accuracy.</li>
+        <li>Tested and provided feedback for ML models, resulting in measurable improvements in efficiency and accuracy.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-meta">Apr 2020 — Aug 2021 · Full-time · Lagos, Nigeria</div>
+      <div class="timeline-role">Data Analyst</div>
+      <div class="timeline-company">Smarterise</div>
+      <ul class="timeline-points">
+        <li>Delivered summarized energy consumption and power quality insights that saved clients more than 30% of annual operational budget.</li>
+        <li>Built a comprehensive KPI sales report for a multinational client, enabling data-driven decisions that boosted annual sales revenue by 40%.</li>
+        <li>Applied ML models to predict energy load profiles for research and recommendation purposes.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-meta">Aug 2021 — Feb 2022 · Part-time · Remote</div>
+      <div class="timeline-role">Python Tutor / Mentor</div>
+      <div class="timeline-company">Kodland UK</div>
+      <ul class="timeline-points">
+        <li>Taught Python and Scratch programming to learners aged 8–17 with no prior coding experience.</li>
+        <li>Mentored students on projects including chatbots, PyGame, Discord/Telegram Bots, Tkinter, and Figma product design.</li>
       </ul>
     </div>
 
@@ -1207,17 +1254,20 @@
       </div>
     </a>
 
-    <a class="project-card" href="https://github.com/ogbeks/sitruna_backfill" target="_blank">
+    <div class="project-card" style="cursor:default;">
       <div class="project-number">03</div>
+      <div style="display:inline-flex;align-items:center;gap:0.4rem;font-family:'Space Mono',monospace;font-size:0.6rem;color:var(--accent3);border:1px solid rgba(255,107,53,0.3);background:rgba(255,107,53,0.07);padding:0.2rem 0.6rem;margin-bottom:0.5rem;letter-spacing:0.05em;">🔒 Private Client Project</div>
       <div class="project-title">Siturna — Amazon Marketing Backfill UI</div>
-      <div class="project-desc">An iterative visualization UI for backfilling Amazon marketing data into BigQuery. Built with Streamlit and Flask, hosted on Google App Engine. Handles 60+ CSV data URLs through an automated GCP pipeline.</div>
+      <div class="project-desc">Built an end-to-end scalable ETL pipeline migrating 60+ Amazon Seller CSV report URLs into BigQuery using a GCP VM Instance and Python scripts. Developed a Streamlit + Flask UI hosted on Google App Engine for iterative historical data backfilling — eliminating manual data loads for the client entirely.</div>
       <div class="project-tags">
+        <span class="project-tag">Python</span>
         <span class="project-tag">Streamlit</span>
         <span class="project-tag">Flask</span>
         <span class="project-tag">BigQuery</span>
         <span class="project-tag">GCP App Engine</span>
+        <span class="project-tag">FastAPI</span>
       </div>
-    </a>
+    </div>
 
     <a class="project-card" href="https://github.com/ogbeks/griddb-kafka-stream" target="_blank">
       <div class="project-number">04</div>
@@ -1261,6 +1311,163 @@
     <a href="https://github.com/ogbeks" target="_blank" class="btn-outline" style="display:inline-flex;align-items:center;gap:0.5rem;">
       View All Repositories on GitHub ↗
     </a>
+  </div>
+</section>
+
+<!-- ─── SKILLS ─── -->
+<section id="skills" style="background:var(--surface);border-bottom:1px solid var(--border);">
+  <div class="section-label">Technical Skills</div>
+  <h2 class="section-title">Tools & Technologies</h2>
+
+  <div style="display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);">
+
+    <!-- Programming Languages -->
+    <div style="background:var(--bg);padding:2rem 2.5rem;display:grid;grid-template-columns:220px 1fr;align-items:start;gap:2rem;">
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.3rem;">01</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--text);">Programming Languages</div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;">
+        <span class="skill-badge lang">Python</span>
+        <span class="skill-badge lang">SQL</span>
+        <span class="skill-badge lang">Java</span>
+        <span class="skill-badge lang">R</span>
+        <span class="skill-badge lang">C++</span>
+        <span class="skill-badge lang">HTML</span>
+        <span class="skill-badge lang">CSS</span>
+      </div>
+    </div>
+
+    <!-- Databases -->
+    <div style="background:var(--surface2);padding:2rem 2.5rem;display:grid;grid-template-columns:220px 1fr;align-items:start;gap:2rem;">
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.3rem;">02</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--text);">Databases</div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;">
+        <span class="skill-badge db">PostgreSQL</span>
+        <span class="skill-badge db">BigQuery</span>
+        <span class="skill-badge db">MySQL</span>
+        <span class="skill-badge db">MongoDB</span>
+        <span class="skill-badge db">Snowflake</span>
+        <span class="skill-badge db">Supabase</span>
+        <span class="skill-badge db">Cloud SQL</span>
+        <span class="skill-badge db">Amazon RDS</span>
+        <span class="skill-badge db">Amazon Redshift</span>
+        <span class="skill-badge db">GridDB</span>
+      </div>
+    </div>
+
+    <!-- Data Engineering & ETL -->
+    <div style="background:var(--bg);padding:2rem 2.5rem;display:grid;grid-template-columns:220px 1fr;align-items:start;gap:2rem;">
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.3rem;">03</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--text);">Data Engineering & ETL</div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;">
+        <span class="skill-badge de">Apache Airflow</span>
+        <span class="skill-badge de">DBT</span>
+        <span class="skill-badge de">Apache Kafka</span>
+        <span class="skill-badge de">Apache Spark</span>
+        <span class="skill-badge de">AWS Glue</span>
+        <span class="skill-badge de">Airbyte</span>
+        <span class="skill-badge de">Fivetran</span>
+        <span class="skill-badge de">AWS Data Wrangler</span>
+        <span class="skill-badge de">PySpark</span>
+        <span class="skill-badge de">FastAPI</span>
+      </div>
+    </div>
+
+    <!-- Cloud & Infrastructure -->
+    <div style="background:var(--surface2);padding:2rem 2.5rem;display:grid;grid-template-columns:220px 1fr;align-items:start;gap:2rem;">
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.3rem;">04</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--text);">Cloud & Infrastructure</div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;">
+        <span class="skill-badge cloud">GCP</span>
+        <span class="skill-badge cloud">AWS (EC2, S3, Glue, SageMaker, Lambda)</span>
+        <span class="skill-badge cloud">Terraform</span>
+        <span class="skill-badge cloud">Docker</span>
+        <span class="skill-badge cloud">Linux</span>
+        <span class="skill-badge cloud">GCP VM Instance</span>
+        <span class="skill-badge cloud">Cloud Pub/Sub</span>
+        <span class="skill-badge cloud">Cloud Functions</span>
+        <span class="skill-badge cloud">Google App Engine</span>
+      </div>
+    </div>
+
+    <!-- DevOps & CI/CD -->
+    <div style="background:var(--bg);padding:2rem 2.5rem;display:grid;grid-template-columns:220px 1fr;align-items:start;gap:2rem;">
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.3rem;">05</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--text);">DevOps & CI/CD</div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;">
+        <span class="skill-badge devops">GitHub Actions</span>
+        <span class="skill-badge devops">Jenkins</span>
+        <span class="skill-badge devops">GitLab CI</span>
+        <span class="skill-badge devops">Cloud Build</span>
+        <span class="skill-badge devops">Cloud Triggers</span>
+        <span class="skill-badge devops">Git</span>
+        <span class="skill-badge devops">Docker</span>
+      </div>
+    </div>
+
+    <!-- AI & Machine Learning -->
+    <div style="background:var(--surface2);padding:2rem 2.5rem;display:grid;grid-template-columns:220px 1fr;align-items:start;gap:2rem;">
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.3rem;">06</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--text);">AI & Machine Learning</div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;">
+        <span class="skill-badge ai">Claude Code</span>
+        <span class="skill-badge ai">LLM Training</span>
+        <span class="skill-badge ai">RLHF</span>
+        <span class="skill-badge ai">Scikit-learn</span>
+        <span class="skill-badge ai">Keras</span>
+        <span class="skill-badge ai">XGBoost</span>
+        <span class="skill-badge ai">AWS SageMaker</span>
+        <span class="skill-badge ai">Pandas</span>
+        <span class="skill-badge ai">NumPy</span>
+        <span class="skill-badge ai">Matplotlib</span>
+        <span class="skill-badge ai">R Shiny</span>
+      </div>
+    </div>
+
+    <!-- Visualization & BI -->
+    <div style="background:var(--bg);padding:2rem 2.5rem;display:grid;grid-template-columns:220px 1fr;align-items:start;gap:2rem;">
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.3rem;">07</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--text);">Visualization & BI</div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;">
+        <span class="skill-badge viz">Metabase</span>
+        <span class="skill-badge viz">Looker Studio</span>
+        <span class="skill-badge viz">Power BI</span>
+        <span class="skill-badge viz">Tableau</span>
+        <span class="skill-badge viz">Mode Analytics</span>
+        <span class="skill-badge viz">Streamlit</span>
+        <span class="skill-badge viz">Sigma</span>
+      </div>
+    </div>
+
+    <!-- Management & Collaboration -->
+    <div style="background:var(--surface2);padding:2rem 2.5rem;display:grid;grid-template-columns:220px 1fr;align-items:start;gap:2rem;">
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.3rem;">08</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--text);">Management & Collaboration</div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;">
+        <span class="skill-badge mgmt">Jira</span>
+        <span class="skill-badge mgmt">Slack</span>
+        <span class="skill-badge mgmt">Confluence</span>
+        <span class="skill-badge mgmt">ClickUp</span>
+        <span class="skill-badge mgmt">Notion</span>
+        <span class="skill-badge mgmt">Microsoft Office</span>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1327,6 +1534,36 @@
   </div>
 </section>
 
+<!-- ─── COMMUNITY ─── -->
+<section id="community" style="background:var(--surface);border-bottom:1px solid var(--border);">
+  <div class="section-label">Community & Volunteering</div>
+  <h2 class="section-title">Giving Back</h2>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);">
+
+    <div class="expertise-card">
+      <div class="card-icon">🌍</div>
+      <div class="card-title">NYSC — SDGs Advocate</div>
+      <div class="card-desc" style="margin-bottom:0.5rem;">Apr 2020 — Feb 2021</div>
+      <div class="card-desc">Educated and mentored students on the United Nations' 17 Sustainable Development Goals and moral values during National Youth Service Corps.</div>
+    </div>
+
+    <div class="expertise-card">
+      <div class="card-icon">🎓</div>
+      <div class="card-title">Tutor & Mentor — University of Lagos</div>
+      <div class="card-desc" style="margin-bottom:0.5rem;">Jan 2017 — Nov 2019</div>
+      <div class="card-desc">Provided tutorial sessions on difficult engineering courses to coursemates, and mentored freshers on course syllabuses and academic strategies.</div>
+    </div>
+
+    <div class="expertise-card">
+      <div class="card-icon">⚡</div>
+      <div class="card-title">Energy Data Advocacy</div>
+      <div class="card-desc" style="margin-bottom:0.5rem;">Ongoing</div>
+      <div class="card-desc">Advocating for data-driven approaches to Nigeria's power sector challenges — applying data science to energy data for smarter infrastructure decisions.</div>
+    </div>
+
+  </div>
+</section>
+
 <!-- ─── CONTACT ─── -->
 <section id="contact">
   <div class="contact-inner">
@@ -1364,7 +1601,7 @@
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Smooth reveal on scroll
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
